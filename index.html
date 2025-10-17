@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>segsal-landing-page</title>
+        <script>
+            // Prevenir flash de tema al cargar - Por defecto modo claro
+            (function () {
+                const theme = localStorage.getItem('theme');
+                // Solo aplicar dark mode si está explícitamente guardado
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    // Forzar modo claro por defecto
+                    document.documentElement.classList.remove('dark');
+                    if (!theme) {
+                        localStorage.setItem('theme', 'light');
+                    }
+                }
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
+</html>
