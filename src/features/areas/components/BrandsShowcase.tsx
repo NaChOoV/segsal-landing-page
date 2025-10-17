@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-import { useSafariDetect } from '@/hooks/useSafariDetect';
 
 interface Brand {
     name: string;
@@ -14,14 +13,11 @@ interface BrandsShowcaseProps {
 }
 
 export function BrandsShowcase({ title, subtitle, brands }: BrandsShowcaseProps) {
-    const useAnimateFallback = useSafariDetect(); // true para Safari, Firefox, Zen, etc.
-
     return (
         <motion.section
-            initial={useAnimateFallback ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            animate={useAnimateFallback ? { opacity: 1, y: 0 } : undefined}
-            whileInView={useAnimateFallback ? undefined : { opacity: 1, y: 0 }}
-            viewport={useAnimateFallback ? undefined : { once: true, amount: 0.1, margin: '0px' }}
+            key={`brands-${brands.length}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-16"
         >
@@ -64,20 +60,14 @@ export function BrandsShowcase({ title, subtitle, brands }: BrandsShowcaseProps)
 
                 {/* Decorative circles */}
                 <motion.div
-                    initial={
-                        useAnimateFallback ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }
-                    }
-                    animate={useAnimateFallback ? { scale: 1, opacity: 1 } : undefined}
-                    whileInView={useAnimateFallback ? undefined : { scale: 1, opacity: 1 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-primary/15 via-primary/5 to-transparent blur-2xl"
                 />
                 <motion.div
-                    initial={
-                        useAnimateFallback ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }
-                    }
-                    animate={useAnimateFallback ? { scale: 1, opacity: 1 } : undefined}
-                    whileInView={useAnimateFallback ? undefined : { scale: 1, opacity: 1 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-gradient-to-tr from-primary/15 via-primary/5 to-transparent blur-2xl"
                 />
@@ -86,20 +76,11 @@ export function BrandsShowcase({ title, subtitle, brands }: BrandsShowcaseProps)
                     {brands.map((brand, index) => (
                         <motion.div
                             key={index}
-                            initial={
-                                useAnimateFallback
-                                    ? { opacity: 1, scale: 1, rotate: 0 }
-                                    : { opacity: 0, scale: 0.5, rotate: -10 }
-                            }
-                            animate={
-                                useAnimateFallback ? { opacity: 1, scale: 1, rotate: 0 } : undefined
-                            }
-                            whileInView={
-                                useAnimateFallback ? undefined : { opacity: 1, scale: 1, rotate: 0 }
-                            }
+                            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
                             transition={{
                                 duration: 0.7,
-                                delay: useAnimateFallback ? 0 : index * 0.1,
+                                delay: index * 0.1,
                                 type: 'spring',
                                 bounce: 0.4,
                             }}

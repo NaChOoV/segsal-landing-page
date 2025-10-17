@@ -1,7 +1,11 @@
-import { ContentSection, SubareaHeader } from '../../components';
+import { ContentSection, SubareaHeader, SubareaNavigation } from '../../components';
 import { data } from './data';
 
-export default function MejorasEnCabina() {
+interface MejorasEnCabinaProps {
+    navigate: (path: string) => void;
+}
+
+export default function MejorasEnCabina({ navigate }: MejorasEnCabinaProps) {
     return (
         <div className="container max-w-7xl px-4 py-12">
             <SubareaHeader areaTitle={data.areaTitle} title={data.title} />
@@ -16,6 +20,19 @@ export default function MejorasEnCabina() {
                     imagePosition={section.imagePosition}
                 />
             ))}
+
+            {/* Navegación entre subareas */}
+            <SubareaNavigation
+                onNavigate={navigate}
+                previousSubarea={{
+                    title: 'Aire Acondicionado',
+                    path: '/servicios-equipos-mineria/aire-acondicionado',
+                }}
+                nextSubarea={{
+                    title: 'Presurizado y Certificación',
+                    path: '/servicios-equipos-mineria/presurizado',
+                }}
+            />
         </div>
     );
 }

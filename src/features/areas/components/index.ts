@@ -14,3 +14,4 @@ export { FeaturesGrid } from './FeaturesGrid';
 export { ServicesGrid } from './ServicesGrid';
 export { CTASection } from './CTASection';
 export { BrandsShowcase } from './BrandsShowcase';
+export { SubareaNavigation } from './SubareaNavigation';

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
-import { useSafariDetect } from '@/hooks/useSafariDetect';
 
 interface ContentSectionProps {
     title: string;
@@ -8,6 +7,23 @@ interface ContentSectionProps {
     imageUrl: string;
     imageAlt: string;
     imagePosition?: 'left' | 'right';
+}
+
+// Función para procesar texto con formato **bold**
+function parseTextWithBold(text: string) {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+
+    return parts.map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            const boldText = part.slice(2, -2);
+            return (
+                <strong key={index} className="font-bold text-foreground">
+                    {boldText}
+                </strong>
+            );
+        }
+        return <span key={index}>{part}</span>;
+    });
 }
 
 export function ContentSection({
@@ -21,14 +37,12 @@ export function ContentSection({
     const imageOrder = imagePosition === 'right' ? 'lg:order-2' : 'lg:order-1';
     const contentXOffset = imagePosition === 'right' ? -50 : 50;
     const imageXOffset = imagePosition === 'right' ? 50 : -50;
-    const useAnimateFallback = useSafariDetect(); // true para Safari, Firefox, Zen, etc.
 
     return (
         <motion.section
-            initial={useAnimateFallback ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            animate={useAnimateFallback ? { opacity: 1, y: 0 } : undefined}
-            whileInView={useAnimateFallback ? undefined : { opacity: 1, y: 0 }}
-            viewport={useAnimateFallback ? undefined : { once: true, amount: 0.1, margin: '0px' }}
+            key={`${title}-${imageUrl}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="group relative mb-16 overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-background/70 via-background/60 to-background/50 p-8 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.18)] dark:border-white/10 dark:from-background/50 dark:via-background/40 dark:to-background/30 dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] dark:hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.45)] md:p-12"
         >
@@ -37,18 +51,16 @@ export function ContentSection({
 
             {/* Decorative corner accent - top */}
             <motion.div
-                initial={useAnimateFallback ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
-                animate={useAnimateFallback ? { scale: 1, rotate: 0 } : undefined}
-                whileInView={useAnimateFallback ? undefined : { scale: 1, rotate: 0 }}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.3, type: 'spring' }}
                 className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 blur-2xl"
             />
 
             {/* Decorative quarter circle - opposite side of image */}
             <motion.div
-                initial={useAnimateFallback ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                animate={useAnimateFallback ? { scale: 1, opacity: 1 } : undefined}
-                whileInView={useAnimateFallback ? undefined : { scale: 1, opacity: 1 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.4, type: 'spring' }}
                 className={`absolute ${
                     imagePosition === 'right'
@@ -59,20 +71,14 @@ export function ContentSection({
 
             <div className="relative grid gap-8 lg:grid-cols-2 lg:gap-12 lg:items-stretch">
                 <motion.div
-                    initial={
-                        useAnimateFallback
-                            ? { opacity: 1, x: 0 }
-                            : { opacity: 0, x: contentXOffset }
-                    }
-                    animate={useAnimateFallback ? { opacity: 1, x: 0 } : undefined}
-                    whileInView={useAnimateFallback ? undefined : { opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: contentXOffset }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     className={`space-y-6 ${contentOrder}`}
                 >
                     <motion.div
-                        initial={useAnimateFallback ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        animate={useAnimateFallback ? { opacity: 1, y: 0 } : undefined}
-                        whileInView={useAnimateFallback ? undefined : { opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className="relative inline-block text-3xl font-bold md:text-4xl">
@@ -80,8 +86,7 @@ export function ContentSection({
                             {/* Underline decoration */}
                             <motion.div
                                 initial={{ width: 0 }}
-                                animate={useAnimateFallback ? { width: '100%' } : undefined}
-                                whileInView={useAnimateFallback ? undefined : { width: '100%' }}
+                                animate={{ width: '100%' }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
                                 className="mt-2 h-1 rounded-full bg-gradient-to-r from-primary/60 to-primary/20"
                             />
@@ -92,28 +97,20 @@ export function ContentSection({
                         {descriptions.map((description, index) => (
                             <motion.p
                                 key={index}
-                                initial={
-                                    useAnimateFallback
-                                        ? { opacity: 1, y: 0 }
-                                        : { opacity: 0, y: 10 }
-                                }
-                                animate={useAnimateFallback ? { opacity: 1, y: 0 } : undefined}
-                                whileInView={useAnimateFallback ? undefined : { opacity: 1, y: 0 }}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: 0.1 * index }}
                                 className="leading-relaxed text-muted-foreground text-lg"
                             >
-                                {description}
+                                {parseTextWithBold(description)}
                             </motion.p>
                         ))}
                     </div>
                 </motion.div>
 
                 <motion.div
-                    initial={
-                        useAnimateFallback ? { opacity: 1, x: 0 } : { opacity: 0, x: imageXOffset }
-                    }
-                    animate={useAnimateFallback ? { opacity: 1, x: 0 } : undefined}
-                    whileInView={useAnimateFallback ? undefined : { opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, x: imageXOffset }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className={`relative flex ${imageOrder}`}
                 >
@@ -124,17 +121,8 @@ export function ContentSection({
 
                         {/* Quality badge */}
                         <motion.div
-                            initial={
-                                useAnimateFallback
-                                    ? { opacity: 1, scale: 1, y: 0 }
-                                    : { opacity: 0, scale: 0.8, y: 20 }
-                            }
-                            animate={
-                                useAnimateFallback ? { opacity: 1, scale: 1, y: 0 } : undefined
-                            }
-                            whileInView={
-                                useAnimateFallback ? undefined : { opacity: 1, scale: 1, y: 0 }
-                            }
+                            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.5 }}
                             className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-2xl border border-white/20 bg-background/90 px-3 py-2 text-xs font-medium shadow-lg backdrop-blur-md"
                         >

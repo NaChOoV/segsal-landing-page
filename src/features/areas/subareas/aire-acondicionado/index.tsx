@@ -1,7 +1,16 @@
-import { SubareaHeader, ContentSection, BrandsShowcase } from '../../components/index';
+import {
+    SubareaHeader,
+    ContentSection,
+    BrandsShowcase,
+    SubareaNavigation,
+} from '../../components/index';
 import { data } from './data';
 
-export default function AireAcondicionado() {
+interface AireAcondicionadoProps {
+    navigate: (path: string) => void;
+}
+
+export default function AireAcondicionado({ navigate }: AireAcondicionadoProps) {
     return (
         <div className="container max-w-7xl px-4 py-12">
             <SubareaHeader areaTitle={data.areaTitle} title={data.title} />
@@ -35,6 +44,15 @@ export default function AireAcondicionado() {
                     imagePosition={section.imagePosition}
                 />
             ))}
+
+            {/* Navegación entre subareas */}
+            <SubareaNavigation
+                onNavigate={navigate}
+                nextSubarea={{
+                    title: 'Mejoras en Cabina',
+                    path: '/servicios-equipos-mineria/mejoras-en-cabina',
+                }}
+            />
         </div>
     );
 }

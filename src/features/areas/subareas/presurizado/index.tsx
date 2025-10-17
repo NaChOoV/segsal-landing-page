@@ -1,22 +1,50 @@
 import DetailLayout from '../../components/DetailLayout';
 import MediaGallery from '../../components/MediaGallery';
 import CertificationBadges from '../../components/CertificationBadges';
+import { SubareaNavigation } from '../../components';
 
-export default function Presurizado() {
-  return (
-    <DetailLayout>
-      <header className="mb-4">
-        <h1 className="text-2xl font-semibold">Presurizado y Certificación de Sellado de Cabina</h1>
-        <p className="text-sm text-muted-foreground">Presurizado de cabina y salas eléctricas.</p>
-      </header>
+interface PresurizadoProps {
+    navigate: (path: string) => void;
+}
 
-      <CertificationBadges items={["ISO 9001", "ISO 14001", "ISO 45001"]} />
+export default function Presurizado({ navigate }: PresurizadoProps) {
+    return (
+        <DetailLayout>
+            <header className="mb-4">
+                <h1 className="text-2xl font-semibold">
+                    Presurizado y Certificación de Sellado de Cabina
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                    Presurizado de cabina y salas eléctricas.
+                </p>
+            </header>
 
-      <div className="mt-4">
-        <MediaGallery items={[
-          { kind: 'image', src: '/images/placeholder-presurizado-1.jpg', alt: 'Presurizado cabina' }
-        ]} />
-      </div>
-    </DetailLayout>
-  );
+            <CertificationBadges items={['ISO 9001', 'ISO 14001', 'ISO 45001']} />
+
+            <div className="mt-4">
+                <MediaGallery
+                    items={[
+                        {
+                            kind: 'image',
+                            src: '/images/placeholder-presurizado-1.jpg',
+                            alt: 'Presurizado cabina',
+                        },
+                    ]}
+                />
+            </div>
+
+            {/* Navegación entre subareas */}
+            <SubareaNavigation
+                onNavigate={navigate}
+                previousSubarea={{
+                    title: 'Mejoras en Cabina',
+                    path: '/servicios-equipos-mineria/mejoras-en-cabina',
+                }}
+                nextSubarea={{
+                    title: 'Pintado de Palas',
+                    path: '/servicios-equipos-mineria/pintado-de-palas',
+                }}
+            />
+        </DetailLayout>
+    );
 }

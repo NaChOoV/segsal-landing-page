@@ -232,15 +232,17 @@ function App() {
                                 ← Volver a Servicios en Equipos de Minería
                             </motion.button>
                             {path === '/servicios-equipos-mineria/aire-acondicionado' && (
-                                <AireAcondicionado />
+                                <AireAcondicionado navigate={navigate} />
                             )}
                             {path === '/servicios-equipos-mineria/mejoras-en-cabina' && (
-                                <MejorasEnCabina />
+                                <MejorasEnCabina navigate={navigate} />
                             )}
                             {path === '/servicios-equipos-mineria/pintado-de-palas' && (
-                                <PintadoDePalas />
+                                <PintadoDePalas navigate={navigate} />
                             )}
-                            {path === '/servicios-equipos-mineria/presurizado' && <Presurizado />}
+                            {path === '/servicios-equipos-mineria/presurizado' && (
+                                <Presurizado navigate={navigate} />
+                            )}
                         </motion.section>
                     )}
                 </AnimatePresence>
