@@ -3,10 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import ServiciosEquiposMineria from '@/features/areas/areas/servicios-equipos-mineria';
 import AireAcondicionado from '@/features/areas/subareas/aire-acondicionado';
 import MejorasEnCabina from '@/features/areas/subareas/mejoras-en-cabina';
-import PintadoDePalas from '@/features/areas/subareas/pintado-de-palas';
+import PintadoDePalas from '@/features/areas/subareas/normalizacion-grafica';
 import Presurizado from '@/features/areas/subareas/presurizado';
 import Header from '@/components/ui/Header';
-import { HardHat, Wrench, Building2, Wind, ArrowRight } from 'lucide-react';
+import { HardHat, Wind, ArrowRight } from 'lucide-react';
 
 const pageVariants = {
     initial: {
@@ -57,20 +57,6 @@ function App() {
             description:
                 'Mantenimiento y reparación de sistemas de aire acondicionado, mejoras en cabina, presurizado y pintado de palas.',
             path: '/servicios-equipos-mineria',
-        },
-        {
-            icon: <Wrench className="h-10 w-10 text-primary" />,
-            title: 'Servicio Técnico',
-            description:
-                'Detección de gases, maletas de filtrado de aire y equipos de respiración autónoma (SCBA).',
-            path: '/servicio-tecnico',
-        },
-        {
-            icon: <Building2 className="h-10 w-10 text-primary" />,
-            title: 'Trabajos Verticales',
-            description:
-                'Acceso por cuerda y protección contra caídas con personal altamente calificado.',
-            path: '/trabajos-verticales',
         },
         {
             icon: <Wind className="h-10 w-10 text-primary" />,
@@ -237,7 +223,7 @@ function App() {
                             {path === '/servicios-equipos-mineria/mejoras-en-cabina' && (
                                 <MejorasEnCabina navigate={navigate} />
                             )}
-                            {path === '/servicios-equipos-mineria/pintado-de-palas' && (
+                            {path === '/servicios-equipos-mineria/normalizacion-grafica' && (
                                 <PintadoDePalas navigate={navigate} />
                             )}
                             {path === '/servicios-equipos-mineria/presurizado' && (

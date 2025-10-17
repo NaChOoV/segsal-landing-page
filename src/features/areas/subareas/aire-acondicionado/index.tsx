@@ -28,9 +28,9 @@ export default function AireAcondicionado({ navigate }: AireAcondicionadoProps) 
 
             {/* Showcase de marcas */}
             <BrandsShowcase
-                title={data.brands.title}
-                subtitle={data.brands.subtitle}
-                brands={data.brands.items}
+                title={data.brands[0].title}
+                subtitle={data.brands[0].subtitle}
+                brands={data.brands[0].items}
             />
 
             {/* Secciones de contenido restantes */}

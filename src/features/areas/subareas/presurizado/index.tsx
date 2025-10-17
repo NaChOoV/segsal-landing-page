@@ -1,7 +1,5 @@
-import DetailLayout from '../../components/DetailLayout';
-import MediaGallery from '../../components/MediaGallery';
-import CertificationBadges from '../../components/CertificationBadges';
-import { SubareaNavigation } from '../../components';
+import { BrandsShowcase, ContentSection, SubareaHeader, SubareaNavigation } from '../../components';
+import { data } from './data';
 
 interface PresurizadoProps {
     navigate: (path: string) => void;
@@ -9,42 +7,51 @@ interface PresurizadoProps {
 
 export default function Presurizado({ navigate }: PresurizadoProps) {
     return (
-        <DetailLayout>
-            <header className="mb-4">
-                <h1 className="text-2xl font-semibold">
-                    Presurizado y Certificación de Sellado de Cabina
-                </h1>
-                <p className="text-sm text-muted-foreground">
-                    Presurizado de cabina y salas eléctricas.
-                </p>
-            </header>
+        <div className="container max-w-7xl px-4 py-12">
+            <SubareaHeader areaTitle={data.areaTitle} title={data.title} />
 
-            <CertificationBadges items={['ISO 9001', 'ISO 14001', 'ISO 45001']} />
-
-            <div className="mt-4">
-                <MediaGallery
-                    items={[
-                        {
-                            kind: 'image',
-                            src: '/images/placeholder-presurizado-1.jpg',
-                            alt: 'Presurizado cabina',
-                        },
-                    ]}
+            {/* Primera sección de contenido */}
+            {data.sections[0] && (
+                <ContentSection
+                    title={data.sections[0].title}
+                    descriptions={data.sections[0].descriptions}
+                    imageUrl={data.sections[0].imageData.url}
+                    imageAlt={data.sections[0].imageData.alt}
+                    imagePosition={data.sections[0].imagePosition}
                 />
-            </div>
+            )}
+
+            {/* Showcase de marcas */}
+            <BrandsShowcase
+                title={data.brands[0].title}
+                subtitle={data.brands[0].subtitle}
+                brands={data.brands[0].items}
+            />
+
+            {/* Secciones de contenido restantes */}
+            {data.sections.slice(1).map((section, index) => (
+                <ContentSection
+                    key={index + 1}
+                    title={section.title}
+                    descriptions={section.descriptions}
+                    imageUrl={section.imageData.url}
+                    imageAlt={section.imageData.alt}
+                    imagePosition={section.imagePosition}
+                />
+            ))}
 
             {/* Navegación entre subareas */}
             <SubareaNavigation
                 onNavigate={navigate}
                 previousSubarea={{
-                    title: 'Mejoras en Cabina',
-                    path: '/servicios-equipos-mineria/mejoras-en-cabina',
+                    title: 'Presurizado y Certificación',
+                    path: '/servicios-equipos-mineria/presurizado',
                 }}
                 nextSubarea={{
-                    title: 'Pintado de Palas',
-                    path: '/servicios-equipos-mineria/pintado-de-palas',
+                    title: 'Normalizacion Grafica',
+                    path: '/servicios-equipos-mineria/normalizacion-grafica',
                 }}
             />
-        </DetailLayout>
+        </div>
     );
 }

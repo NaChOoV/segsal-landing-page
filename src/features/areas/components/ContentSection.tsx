@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
+import { useBrowserDetect } from '@/hooks/useBrowserDetect';
 
 interface ContentSectionProps {
     title: string;
@@ -38,12 +39,30 @@ export function ContentSection({
     const contentXOffset = imagePosition === 'right' ? -50 : 50;
     const imageXOffset = imagePosition === 'right' ? 50 : -50;
 
+    // Detectar navegador para deshabilitar animaciones si es necesario
+    const { shouldDisableAnimations } = useBrowserDetect();
+
+    // Si debemos deshabilitar animaciones, no usar initial/animate
+    const sectionVariants = shouldDisableAnimations
+        ? { initial: {}, animate: {} }
+        : { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 } };
+
     return (
         <motion.section
             key={`${title}-${imageUrl}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={sectionVariants.initial}
+            animate={sectionVariants.animate}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            style={{
+                WebkitTransform: 'translate3d(0,0,0)',
+                transform: 'translate3d(0,0,0)',
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
+                WebkitPerspective: '1000px',
+                perspective: '1000px',
+                WebkitFontSmoothing: 'subpixel-antialiased',
+                isolation: 'isolate',
+            }}
             className="group relative mb-16 overflow-hidden rounded-3xl border border-white/20 bg-gradient-to-br from-background/70 via-background/60 to-background/50 p-8 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.18)] dark:border-white/10 dark:from-background/50 dark:via-background/40 dark:to-background/30 dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] dark:hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.45)] md:p-12"
         >
             {/* Decorative gradient overlay */}
@@ -51,9 +70,15 @@ export function ContentSection({
 
             {/* Decorative corner accent - top */}
             <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ duration: 0.6, delay: 0.3, type: 'spring' }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+                style={{
+                    WebkitTransform: 'translate3d(0,0,0)',
+                    transform: 'translate3d(0,0,0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden',
+                }}
                 className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 blur-2xl"
             />
 
@@ -61,7 +86,13 @@ export function ContentSection({
             <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.4, type: 'spring' }}
+                transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+                style={{
+                    WebkitTransform: 'translate3d(0,0,0)',
+                    transform: 'translate3d(0,0,0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden',
+                }}
                 className={`absolute ${
                     imagePosition === 'right'
                         ? '-bottom-16 -left-16 rounded-tr-full'
@@ -73,13 +104,25 @@ export function ContentSection({
                 <motion.div
                     initial={{ opacity: 0, x: contentXOffset }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
+                    transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+                    style={{
+                        WebkitTransform: 'translate3d(0,0,0)',
+                        transform: 'translate3d(0,0,0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden',
+                    }}
                     className={`space-y-6 ${contentOrder}`}
                 >
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                        style={{
+                            WebkitTransform: 'translate3d(0,0,0)',
+                            transform: 'translate3d(0,0,0)',
+                            WebkitBackfaceVisibility: 'hidden',
+                            backfaceVisibility: 'hidden',
+                        }}
                     >
                         <h2 className="relative inline-block text-3xl font-bold md:text-4xl">
                             {title}
@@ -87,7 +130,13 @@ export function ContentSection({
                             <motion.div
                                 initial={{ width: 0 }}
                                 animate={{ width: '100%' }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
+                                transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+                                style={{
+                                    WebkitTransform: 'translate3d(0,0,0)',
+                                    transform: 'translate3d(0,0,0)',
+                                    WebkitBackfaceVisibility: 'hidden',
+                                    backfaceVisibility: 'hidden',
+                                }}
                                 className="mt-2 h-1 rounded-full bg-gradient-to-r from-primary/60 to-primary/20"
                             />
                         </h2>
@@ -99,7 +148,13 @@ export function ContentSection({
                                 key={index}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: 0.1 * index }}
+                                transition={{ duration: 0.5, delay: 0.1 * index, ease: 'easeOut' }}
+                                style={{
+                                    WebkitTransform: 'translate3d(0,0,0)',
+                                    transform: 'translate3d(0,0,0)',
+                                    WebkitBackfaceVisibility: 'hidden',
+                                    backfaceVisibility: 'hidden',
+                                }}
                                 className="leading-relaxed text-muted-foreground text-lg"
                             >
                                 {parseTextWithBold(description)}
@@ -111,7 +166,13 @@ export function ContentSection({
                 <motion.div
                     initial={{ opacity: 0, x: imageXOffset }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+                    style={{
+                        WebkitTransform: 'translate3d(0,0,0)',
+                        transform: 'translate3d(0,0,0)',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden',
+                    }}
                     className={`relative flex ${imageOrder}`}
                 >
                     {/* Image container with enhanced effects */}
@@ -123,7 +184,13 @@ export function ContentSection({
                         <motion.div
                             initial={{ opacity: 0, scale: 0.8, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
+                            transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
+                            style={{
+                                WebkitTransform: 'translate3d(0,0,0)',
+                                transform: 'translate3d(0,0,0)',
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden',
+                            }}
                             className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-2xl border border-white/20 bg-background/90 px-3 py-2 text-xs font-medium shadow-lg backdrop-blur-md"
                         >
                             <Sparkles className="h-3 w-3 text-primary" />
@@ -131,19 +198,27 @@ export function ContentSection({
                         </motion.div>
 
                         {/* Image with hover zoom */}
-                        <motion.img
+                        <img
                             src={imageUrl}
                             alt={imageAlt}
                             className="h-full w-full object-cover transition-transform duration-700 group-hover/image:scale-105"
-                            whileHover={{ scale: 1.05 }}
+                            style={{
+                                WebkitTransform: 'translate3d(0,0,0)',
+                                transform: 'translate3d(0,0,0)',
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden',
+                            }}
                         />
 
                         {/* Shine effect on hover */}
-                        <motion.div
+                        <div
                             className="absolute inset-0 z-10 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover/image:opacity-100"
-                            initial={{ x: '-100%' }}
-                            whileHover={{ x: '100%' }}
-                            transition={{ duration: 1, ease: 'easeInOut' }}
+                            style={{
+                                WebkitTransform: 'translate3d(0,0,0)',
+                                transform: 'translate3d(0,0,0)',
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden',
+                            }}
                         />
                     </div>
                 </motion.div>

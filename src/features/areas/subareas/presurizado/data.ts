@@ -1,12 +1,12 @@
 export const data = {
-    title: 'Presurizado de cabina',
+    title: 'Presurizado y Certificaciones',
     areaTitle: 'Servicios en Equipos de Minería',
     sections: [
         {
             title: 'Presurizado de cabina',
             imageData: {
                 alt: 'Técnico especializado en aire acondicionado',
-                url: '/areas/servicios-equipos-mineria/aire-acondicionado/image1.jpeg',
+                url: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/image1.jpeg',
             },
             imagePosition: 'left' as const,
             descriptions: [
@@ -18,8 +18,8 @@ export const data = {
         {
             title: 'Presurizado de salas eléctricas',
             imageData: {
-                alt: 'Mención de marcas',
-                url: '/areas/servicios-equipos-mineria/aire-acondicionado/image2.jpeg',
+                alt: 'Presurizado de salas eléctricas',
+                url: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/image2.jpeg',
             },
             imagePosition: 'left' as const,
             descriptions: [
@@ -31,8 +31,8 @@ export const data = {
         {
             title: 'Certificado de Sellado de Cabina',
             imageData: {
-                alt: 'Pruebas de humo y ultrasonido',
-                url: '/areas/servicios-equipos-mineria/aire-acondicionado/image3.png',
+                alt: 'Certificado de Sellado de Cabina',
+                url: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/image3.jpeg',
             },
             imagePosition: 'right' as const,
             descriptions: [
@@ -42,27 +42,21 @@ export const data = {
             ],
         },
     ],
-    brands: {
-        title: 'Trabajamos con las mejores marcas',
-        subtitle:
-            'Experiencia certificada con los principales fabricantes de equipos de minería a nivel mundial',
-        items: [
-            {
-                name: 'P&H',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-p&h.png',
-            },
-            {
-                name: 'Komatsu',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-komatsu.png',
-            },
-            {
-                name: 'Epiroc',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-epiroc.png',
-            },
-            {
-                name: 'Caterpillar',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-cat.png',
-            },
-        ],
-    },
+    brands: [
+        {
+            title: 'Trabajamos con las mejores marcas',
+            subtitle:
+                'Experiencia certificada con los principales fabricantes de equipos de minería a nivel mundial',
+            items: [
+                {
+                    name: 'Hunter Douglas',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/hunter-douglas-logo.png',
+                },
+                {
+                    name: 'SyKlone',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/sy-klone-logo.png',
+                },
+            ],
+        },
+    ],
 };

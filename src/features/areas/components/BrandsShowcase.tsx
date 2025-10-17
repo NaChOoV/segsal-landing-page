@@ -44,7 +44,16 @@ export function BrandsShowcase({ title, subtitle, brands }: BrandsShowcaseProps)
                 </div>
             )}
 
-            <div className="group relative overflow-hidden rounded-3xl border border-white/20 dark:border-white/10 bg-gradient-to-br from-background/70 via-background/60 to-background/50 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] p-10 md:p-16 transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.18)] dark:hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.45)]">
+            <div
+                className="group relative overflow-hidden rounded-3xl border border-white/20 dark:border-white/10 bg-gradient-to-br from-background/70 via-background/60 to-background/50 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] p-10 md:p-16 transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.18)] dark:hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.45)]"
+                style={{
+                    WebkitTransform: 'translateZ(0)',
+                    transform: 'translateZ(0)',
+                    WebkitBackfaceVisibility: 'hidden',
+                    backfaceVisibility: 'hidden',
+                    isolation: 'isolate',
+                }}
+            >
                 {/* Decorative animated gradient */}
                 <motion.div
                     className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/8 via-transparent to-primary/8"
@@ -72,7 +81,15 @@ export function BrandsShowcase({ title, subtitle, brands }: BrandsShowcaseProps)
                     className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-gradient-to-tr from-primary/15 via-primary/5 to-transparent blur-2xl"
                 />
 
-                <div className="relative grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 lg:gap-10">
+                <div
+                    className={`relative grid gap-6 md:gap-8 lg:gap-10 ${
+                        brands.length <= 2
+                            ? 'grid-cols-1 sm:grid-cols-2 place-items-center max-w-2xl mx-auto'
+                            : brands.length === 3
+                            ? 'grid-cols-2 md:grid-cols-3 place-items-center max-w-4xl mx-auto'
+                            : 'grid-cols-2 md:grid-cols-4'
+                    }`}
+                >
                     {brands.map((brand, index) => (
                         <motion.div
                             key={index}

@@ -39,27 +39,29 @@ export const data = {
             ],
         },
     ],
-    brands: {
-        title: 'Trabajamos con las mejores marcas',
-        subtitle:
-            'Experiencia certificada con los principales fabricantes de equipos de minería a nivel mundial',
-        items: [
-            {
-                name: 'P&H',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-p&h.png',
-            },
-            {
-                name: 'Komatsu',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-komatsu.png',
-            },
-            {
-                name: 'Epiroc',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-epiroc.png',
-            },
-            {
-                name: 'Caterpillar',
-                logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-cat.png',
-            },
-        ],
-    },
+    brands: [
+        {
+            title: 'Trabajamos con las mejores marcas',
+            subtitle:
+                'Experiencia certificada con los principales fabricantes de equipos de minería a nivel mundial',
+            items: [
+                {
+                    name: 'P&H',
+                    logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-p&h.png',
+                },
+                {
+                    name: 'Komatsu',
+                    logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-komatsu.png',
+                },
+                {
+                    name: 'Epiroc',
+                    logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-epiroc.png',
+                },
+                {
+                    name: 'Caterpillar',
+                    logo: '/areas/servicios-equipos-mineria/aire-acondicionado/logo-cat.png',
+                },
+            ],
+        },
+    ],
 };
