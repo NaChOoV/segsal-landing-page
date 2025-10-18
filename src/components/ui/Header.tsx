@@ -15,7 +15,7 @@ export default function Header() {
                     <img
                         src="/logo_Segsal.png"
                         alt="Segsal Latam"
-                        className="h-22 w-auto translate-y-[1px] select-none transition-transform duration-300 group-hover:scale-[1.03]"
+                        className="h-16 w-auto translate-y-[1px] select-none transition-transform duration-300 group-hover:scale-[1.03]"
                     />
                 </a>
             </div>

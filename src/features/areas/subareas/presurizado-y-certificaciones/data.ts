@@ -58,5 +58,37 @@ export const data = {
                 },
             ],
         },
+        {
+            title: 'Certificaciones',
+            subtitle:
+                'En SEGSAL LATAM SpA contamos con certificaciones internacionales en ISO 9001, ISO 14001 e ISO 45001, lo que nos avala como una empresa que cumple con los más altos estándares de calidad, cuidado del medioambiente y seguridad laboral. Estas certificaciones no solo reflejan nuestro compromiso, sino que también entregan a nuestros clientes la tranquilidad de trabajar con un aliado confiable, responsable y con respaldo internacional. Al elegirnos, aseguras procesos eficientes, seguros y sostenibles, diseñados para aportar valor real a tus proyectos y generar relaciones de confianza a largo plazo.',
+            items: [
+                {
+                    name: 'Certificado de Sellado de Cabina',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/certificado-sellado-cabina.png',
+                },
+            ],
+        },
+    ],
+    certifications: [
+        {
+            title: 'Certificaciones Internacionales',
+            description:
+                'En SEGSAL LATAM SpA contamos con certificaciones internacionales en ISO 9001, ISO 14001 e ISO 45001, lo que nos avala como una empresa que cumple con los más altos estándares de calidad, cuidado del medioambiente y seguridad laboral. Estas certificaciones no solo reflejan nuestro compromiso, sino que también entregan a nuestros clientes la tranquilidad de trabajar con un aliado confiable, responsable y con respaldo internacional. Al elegirnos, aseguras procesos eficientes, seguros y sostenibles, diseñados para aportar valor real a tus proyectos y generar relaciones de confianza a largo plazo.',
+            items: [
+                {
+                    name: 'Certificación ISO 9001 - Sistemas de Gestión de Calidad',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/logo-iso-9001.png',
+                },
+                {
+                    name: 'Certificación ISO 14001 - Sistemas de Gestión Ambiental',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/logo-iso-14001.png',
+                },
+                {
+                    name: 'Certificación ISO 45001 - Sistemas de Gestión de Seguridad y Salud',
+                    logo: '/areas/servicios-equipos-mineria/presurizado-certificacion-sellado-cabina/logo-iso-45001.png',
+                },
+            ],
+        },
     ],
 };

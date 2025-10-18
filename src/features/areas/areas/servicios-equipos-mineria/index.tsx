@@ -50,17 +50,17 @@ export default function ServiciosEquiposMineria({
             path: '/servicios-equipos-mineria/mejoras-en-cabina',
         },
         {
-            icon: <Paintbrush className="h-8 w-8 text-primary" />,
-            title: 'Pintado de Palas',
-            description:
-                'Pintado profesional, demarcación y gráfica para equipos de gran envergadura',
-            path: '/servicios-equipos-mineria/pintado-de-palas',
+            icon: <Droplets className="h-8 w-8 text-primary" />,
+            title: 'Presurizado y Certificaciones',
+            description: 'Presurizado y certificación de sellado para cabinas y salas eléctricas',
+            path: '/servicios-equipos-mineria/presurizado-y-certificaciones',
         },
         {
-            icon: <Droplets className="h-8 w-8 text-primary" />,
-            title: 'Presurizado',
-            description: 'Presurizado y certificación de sellado para cabinas y salas eléctricas',
-            path: '/servicios-equipos-mineria/presurizado',
+            icon: <Paintbrush className="h-8 w-8 text-primary" />,
+            title: 'Normalizacion Grafica',
+            description:
+                'Pintado profesional, demarcación y gráfica para equipos de gran envergadura',
+            path: '/servicios-equipos-mineria/normalizacion-grafica',
         },
     ];
 

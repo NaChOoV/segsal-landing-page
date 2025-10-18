@@ -4,7 +4,7 @@ import ServiciosEquiposMineria from '@/features/areas/areas/servicios-equipos-mi
 import AireAcondicionado from '@/features/areas/subareas/aire-acondicionado';
 import MejorasEnCabina from '@/features/areas/subareas/mejoras-en-cabina';
 import PintadoDePalas from '@/features/areas/subareas/normalizacion-grafica';
-import Presurizado from '@/features/areas/subareas/presurizado';
+import PresurizadoCertificaciones from '@/features/areas/subareas/presurizado-y-certificaciones';
 import Header from '@/components/ui/Header';
 import { HardHat, Wind, ArrowRight } from 'lucide-react';
 
@@ -226,8 +226,9 @@ function App() {
                             {path === '/servicios-equipos-mineria/normalizacion-grafica' && (
                                 <PintadoDePalas navigate={navigate} />
                             )}
-                            {path === '/servicios-equipos-mineria/presurizado' && (
-                                <Presurizado navigate={navigate} />
+                            {path ===
+                                '/servicios-equipos-mineria/presurizado-y-certificaciones' && (
+                                <PresurizadoCertificaciones navigate={navigate} />
                             )}
                         </motion.section>
                     )}

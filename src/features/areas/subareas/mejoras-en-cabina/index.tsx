@@ -30,7 +30,7 @@ export default function MejorasEnCabina({ navigate }: MejorasEnCabinaProps) {
                 }}
                 nextSubarea={{
                     title: 'Presurizado y Certificación',
-                    path: '/servicios-equipos-mineria/presurizado',
+                    path: '/servicios-equipos-mineria/presurizado-y-certificaciones',
                 }}
             />
         </div>
